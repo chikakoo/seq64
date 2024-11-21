@@ -67,14 +67,29 @@
       <parameter datasrc="fixed" datalen="1" name="Bend" meaning="Value" add="0"
                  multiply="1"/>
     </command>
-    <command cmd="212" name="Effect Level" action="Chn Effects" validinchn="1"
+    <command cmd="212" name="Reverb Level" action="Chn Reverb" validinchn="1"
              validintrk="0">
       <parameter datasrc="fixed" datalen="1" name="Value" meaning="Value" add="0"
                  multiply="1"/>
     </command>
-    <command cmd="216" name="Vibrato (Chn)" action="Chn Vibrato" validinchn="1"
+	<command cmd="215" name="Vibrato Rate" action="Chn Vibrato Rate" validinchn="1"
              validintrk="0">
-      <parameter datasrc="fixed" datalen="1" name="Vibrato" meaning="Value" add="0"
+      <parameter datasrc="fixed" datalen="1" name="Vibrato Rate" meaning="Value" add="0"
+                 multiply="1"/>
+    </command>
+    <command cmd="216" name="Vibrato Depth" action="Chn Vibrato Depth" validinchn="1"
+             validintrk="0">
+      <parameter datasrc="fixed" datalen="1" name="Vibrato Depth" meaning="Value" add="0"
+                 multiply="1"/>
+    </command>
+	<command cmd="217" name="Release Rate" action="Chn Release Rate" validinchn="1"
+             validintrk="0">
+      <parameter datasrc="fixed" datalen="1" name="Release Rate" meaning="Value" add="0"
+                 multiply="1"/>
+    </command>
+	<command cmd="227" name="Vibrato Delay" action="Chn Vibrato Delay" validinchn="1"
+             validintrk="0">
+      <parameter datasrc="fixed" datalen="1" name="Vibrato Delay" meaning="Value" add="0"
                  multiply="1"/>
     </command>
     <command cmd="218" name="Unknown" action="No Action" validinchn="1">

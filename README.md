@@ -1,5 +1,5 @@
 ## Changes from the Orginal version 1.5
-Modifies and adds some of the effects that exist in seq64 2.0+, for those who prefer the old one with the audio bank features.
+*Intended for OoT V1.0 specifically!* Modifies and adds some of the effects that exist in seq64 2.0+, for those who prefer the old one with the audio bank features.
 
 Renames and additions:
 - (72) Chn Release Rate (new)
@@ -7,6 +7,8 @@ Renames and additions:
 - (77) Chn Vibrato -> Chn Vibrato Depth (modified name only)
 - (78) Chn Vibrato Delay (new)
 - (91) Chn Effect -> Chn Reverb (modified name only)
+
+Note that only the OoT V1.0 Rom Desc file has been updated with these.
 
 Some QOL features were also added:
 - Commented out some auto breakpoints that are hit if the ROM is invalid, which is checked several times even before a ROM is loaded (so it's mostly just annoying to debug)
