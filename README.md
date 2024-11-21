@@ -1,7 +1,8 @@
 ## Changes from the Orginal version 1.5
-*Intended for OoT V1.0 specifically!* Modifies and adds some of the effects that exist in seq64 2.0+, for those who prefer the old one with the audio bank features.
+**Intended for OoT V1.0 specifically!** Modifies and adds some of the effects that exist in seq64 2.0+, for those who prefer the old one with the audio bank features.
 
 Renames and additions:
+- (70) Chn Release Sustain (new)
 - (72) Chn Release Rate (new)
 - (76) Chn Vibrato Rate (new)
 - (77) Chn Vibrato -> Chn Vibrato Depth (modified name only)

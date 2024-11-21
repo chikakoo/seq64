@@ -87,6 +87,11 @@
       <parameter datasrc="fixed" datalen="1" name="Release Rate" meaning="Value" add="0"
                  multiply="1"/>
     </command>
+	<command cmd="210" name="Release Sustain" action="Chn Release Sustain" validinchn="1"
+             validintrk="0">
+      <parameter datasrc="fixed" datalen="1" name="Release Sustain" meaning="Value" add="0"
+                 multiply="1"/>
+    </command>
 	<command cmd="227" name="Vibrato Delay" action="Chn Vibrato Delay" validinchn="1"
              validintrk="0">
       <parameter datasrc="fixed" datalen="1" name="Vibrato Delay" meaning="Value" add="0"

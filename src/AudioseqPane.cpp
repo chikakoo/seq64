@@ -218,6 +218,7 @@ AudioseqPane::AudioseqPane(SEQ64& seq64_)
     cbxAction->addItem(TRANS("Layer Transpose"), 27);
     cbxAction->addItem(TRANS("Track Note"), 28);
     cbxAction->addItem(TRANS("Chn Release Rate"), 29);
+    cbxAction->addItem(TRANS("Chn Release Sustain"), 30);
     cbxAction->addListener(this);
 
     cbxAction->setBounds(64, 424, 208, 24);
@@ -1531,6 +1532,9 @@ void AudioseqPane::fillMeaningsBox(String action) {
     else if (action == "Chn Release Rate") {
         cbxMeaning->addItem("Value", cbxMeaning->getNumItems() + 1);
     }
+    else if (action == "Chn Release Sustain") {
+        cbxMeaning->addItem("Value", cbxMeaning->getNumItems() + 1);
+    }
     else {
         cbxMeaning->clear(dontSendNotification);
         cbxMeaning->addItem("ERROR fillMeaningsBox", cbxMeaning->getNumItems() + 1);
@@ -1723,7 +1727,7 @@ BEGIN_JUCER_METADATA
          kerning="0.0" bold="0" italic="0" justification="33"/>
   <COMBOBOX name="Action" id="4cabd0b9e2965ff5" memberName="cbxAction" virtualName=""
             explicitFocusOrder="0" pos="64 424 208 24" editable="0" layout="33"
-            items="No Action&#10;End of Data&#10;Timestamp&#10;Jump Same Level&#10;Call Same Level&#10;Loop Start&#10;Loop End&#10;Ptr Channel Header&#10;Ptr Track Data&#10;Sequence Format&#10;Sequence Type&#10;Channel Enable&#10;Channel Disable&#10;Master Volume&#10;Tempo&#10;Chn Reset&#10;Chn Priority&#10;Chn Volume&#10;Chn Pan&#10;Chn Effects&#10;Chn Vibrato Rate&#10;Chn Vibrato Depth&#10;Chn Vibrato Delay&#10;Chn Pitch Bend&#10;Chn Instrument&#10;Chn Transpose&#10;Layer Transpose&#10;Track Note&#10;Chn Release Rate"
+            items="No Action&#10;End of Data&#10;Timestamp&#10;Jump Same Level&#10;Call Same Level&#10;Loop Start&#10;Loop End&#10;Ptr Channel Header&#10;Ptr Track Data&#10;Sequence Format&#10;Sequence Type&#10;Channel Enable&#10;Channel Disable&#10;Master Volume&#10;Tempo&#10;Chn Reset&#10;Chn Priority&#10;Chn Volume&#10;Chn Pan&#10;Chn Effects&#10;Chn Vibrato Rate&#10;Chn Vibrato Depth&#10;Chn Vibrato Delay&#10;Chn Pitch Bend&#10;Chn Instrument&#10;Chn Transpose&#10;Layer Transpose&#10;Track Note&#10;Chn Release Rate&#10;Chn Release Sustain"
             textWhenNonSelected="" textWhenNoItems="(no choices)"/>
   <LABEL name="new label" id="6d034f22b803ef0c" memberName="label9" virtualName=""
          explicitFocusOrder="0" pos="8 360 55 24" edTextCol="ff000000"

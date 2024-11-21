@@ -1393,6 +1393,9 @@ void SeqFile::parse() {
         else if (action == "Chn Release Rate") {
             //do nothing
         }
+        else if (action == "Chn Release Sustain") {
+            //do nothing
+        }
         else {
             SEQ64::say("Unknown command action " + action + "!");
         }
@@ -1846,6 +1849,17 @@ MidiFile* SeqFile::toMIDIFile(ROM& rom) {
             param = command.getChildWithProperty(idMeaning, "Value");
             if (!param.isValid()) {
                 SEQ64::say("Chn Release Rate event with no value!");
+                continue;
+            }
+            value = getAdjustedValue(param);
+            msg = MidiMessage::controllerEvent(channel + 1, 72, value);
+            msg.setTimeStamp(t * ticks_multiplier);
+            mtracks[channel]->addEvent(msg);
+        }
+        else if (action == "Chn Release Sustain") {
+            param = command.getChildWithProperty(idMeaning, "Value");
+            if (!param.isValid()) {
+                SEQ64::say("Chn Release Sustain event with no value!");
                 continue;
             }
             value = getAdjustedValue(param);
@@ -2709,11 +2723,12 @@ void SeqFile::fromMidiFile(MidiFile& mfile) {
     }
     ccstates[cc]->action = "Chn Volume";
     ccstates[10]->action = "Chn Pan";
-    ccstates[91]->action = "Chn Reverb";
+    ccstates[70]->action = "Chn Release Sustain";
     ccstates[72]->action = "Chn Release Rate";
     ccstates[76]->action = "Chn Vibrato Rate";
     ccstates[77]->action = "Chn Vibrato Depth";
     ccstates[78]->action = "Chn Vibrato Delay";
+    ccstates[91]->action = "Chn Reverb";
     ccstates[128]->action = "Chn Pitch Bend";
     ccstates[129]->action = "Chn Instrument";
     //Channel data
