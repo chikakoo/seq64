@@ -60,6 +60,8 @@ public:
 	void actuallySaveROM();
 	void actuallySaveRomDesc();
 
+	void tryLoadOoTRomDescription();
+
 	void onROMLoaded();
 	void onRomDescLoaded();
 	void onSeqLoaded();

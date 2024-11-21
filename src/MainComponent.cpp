@@ -100,12 +100,32 @@ MainComponent::MainComponent(SEQ64& seq64_, DocumentWindow& window_) : seq64(seq
 	tabbox->addTab("Finder", LFWidgetColor(), &*finder, false);
 	tabbox->setColour(TabbedComponent::backgroundColourId, LFWindowColor());
 	tabbox->setColour(TabbedComponent::outlineColourId, Colours::darkgrey);
+	tabbox->setCurrentTabIndex(2);
 	addAndMakeVisible(*tabbox);
 
 	//Other
 	setSize(1080, 768);
 
 	onROMLoaded();
+	tryLoadOoTRomDescription();
+}
+
+/// <summary>
+/// Tries to load the OoT ROM description from the last folder opened
+/// Always calls onRomDescLoaded so that things are initialized
+/// </summary>
+void MainComponent::tryLoadOoTRomDescription() {
+	const String romDescFolderPath = SEQ64::readFolderProperty("romdescfolder").getFullPathName();
+	const String descFileName = "oot_v1.0_info.xml";
+	const File romDescFile = File(romDescFolderPath + "\\" + descFileName);
+
+	if (romDescFile.existsAsFile()) {
+		seq64.romdescfile = romDescFile;
+		if (!seq64.loadRomDesc()) {
+			seq64.romdescfile = File();
+		}
+	}
+
 	onRomDescLoaded();
 }
 
