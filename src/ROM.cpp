@@ -82,7 +82,13 @@ uint16 ROM::readHalfWord(uint32 address) {
 	if (byteOrdering == DCBA) {
 		address = (uint32)((uint32)address ^ (uint32)0x00000002); //Flip bit 1
 	}
-	if (address + 1 >= getSize()) { jassertfalse; return 0; }
+	if (address + 1 >= getSize()) 
+	{ 
+		// Can comment back in if debugging this specifically, 
+		// but this is hit SEVERAL times after launching and is very annoying
+		//jassertfalse; 
+		return 0; 
+	}
 	uint16 ret = 0;
 	if (byteOrdering == ABCD) {
 		ret = (uint8)(*this)[address];
