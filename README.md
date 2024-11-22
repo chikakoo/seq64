@@ -16,6 +16,7 @@ Some QOL features were also added:
 - Removed the popup that shows up when a MIDI is successfully imported in favor of just having the ones that come up when there's warnings or errors
 - Default to the MIDI File tab, as that's the most common tab to start with usually
 - Auto-load the OoT V1.0 ROM Desc file on launch from the last place a ROM Desc was loaded from
+- 1-indexed instruments 80-89 will be mapped to 0x80-0x89 so common chiptunes are automatically taken care of
 
 ## Original readme (as of version 1.5)
 seq64 - Sequenced music editor for first-party N64 games.

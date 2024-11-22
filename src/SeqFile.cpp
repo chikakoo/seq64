@@ -2809,6 +2809,18 @@ void SeqFile::fromMidiFile(MidiFile& mfile) {
                 else if (msg.isProgramChange()) {
                     cc = 129;
                     value = msg.getProgramChangeNumber();
+
+                    // Convert to hex for chiptune instrument in this range
+                    if (value >= 79 && value <= 90) {
+                        // Convert the value to its hexadecimal string representation
+                        std::stringstream hexStream;
+                        hexStream << std::hex << std::to_string(value + 1);
+                        std::string hexString = hexStream.str();
+
+                        // Convert the hexadecimal string back to an integer (as if it were a base 16 number)
+                        std::stringstream decimalStream(hexString);
+                        decimalStream >> std::hex >> value;
+                    }
                 }
                 else if (msg.isPitchWheel()) {
                     cc = 128;
