@@ -2463,9 +2463,23 @@ void SeqFile::fromMidiFile(MidiFile& mfile) {
                 if (bestlayer < 0) {
                     //No layer was free
                     if (!too_many_notes) {
-                        SEQ64::say("Channel " + String(channel) + " has more than " + String(max_layers)
-                            + " notes on at a time (at t=" + String(msg.getTimeStamp()) + ")!");
-                        SEQ64::say("Putting the extra notes on an unused channel is not yet supported.");
+                        double timestamp = msg.getTimeStamp();
+                        double fourFourMeasureNumber = (timestamp / (48 * 4)) + 1;
+                        double threeFourMeasureNumber = (timestamp / (48 * 3)) + 1;
+
+                        std::ostringstream fourFourStream;
+                        String fourFourMeasureDisplay = "";
+                        fourFourStream << std::fixed << std::setprecision(1) << fourFourMeasureNumber;
+
+                        std::ostringstream threeFourStream;
+                        String threeFourMeasureDisplay = "";
+                        threeFourStream << std::fixed << std::setprecision(1) << threeFourMeasureNumber;
+
+                        SEQ64::say("Channel " + String(channel) + " has more than " + String(max_layers) + " notes on at a time!");
+                        SEQ64::say("> Timestamp (48 per quarter note): " + String(timestamp));
+                        SEQ64::say("> 4/4 measure: " + fourFourStream.str());
+                        SEQ64::say("> 3/4 measure: " + threeFourStream.str());
+                        
                         too_many_notes = true;
                         importresult |= 1;
                     }

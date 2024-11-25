@@ -1,7 +1,7 @@
 ## Changes from the Orginal version 1.5
 **Intended for OoT V1.0 specifically!** Modifies and adds some of the effects that exist in seq64 2.0+, for those who prefer the old one with the audio bank features.
 
-Renames and additions:
+Event renames and additions (*note that only the OoT V1.0 Rom Desc file has been updated with these*):
 - (70) Chn Release Sustain (new)
 - (72) Chn Release Rate (new)
 - (76) Chn Vibrato Rate (new)
@@ -9,14 +9,15 @@ Renames and additions:
 - (78) Chn Vibrato Delay (new)
 - (91) Chn Effect -> Chn Reverb (modified name only)
 
-Note that only the OoT V1.0 Rom Desc file has been updated with these.
+Instrument-related changes:
+- 1-indexed instruments 80-89 will be mapped to 0x80-0x89 so common chiptunes are automatically taken care of
 
 Some QOL features were also added:
 - Commented out some auto breakpoints that are hit if the ROM is invalid, which is checked several times even before a ROM is loaded (so it's mostly just annoying to debug)
 - Removed the popup that shows up when a MIDI is successfully imported in favor of just having the ones that come up when there's warnings or errors
 - Default to the MIDI File tab, as that's the most common tab to start with usually
 - Auto-load the OoT V1.0 ROM Desc file on launch from the last place a ROM Desc was loaded from
-- 1-indexed instruments 80-89 will be mapped to 0x80-0x89 so common chiptunes are automatically taken care of
+- Adjusted the more than 4-notes on at a time error message to include the measure number if in 4/4 and 3/4 time
 
 ## Original readme (as of version 1.5)
 seq64 - Sequenced music editor for first-party N64 games.
