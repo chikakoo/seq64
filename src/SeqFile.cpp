@@ -1819,7 +1819,9 @@ MidiFile* SeqFile::toMIDIFile(ROM& rom) {
                 continue;
             }
             value = getAdjustedValue(param);
-            msg = MidiMessage::controllerEvent(channel + 1, 76, value);
+
+            int controllerType = value > 127 ? 80 : 76;
+            msg = MidiMessage::controllerEvent(channel + 1, controllerType, value);
             msg.setTimeStamp(t * ticks_multiplier);
             mtracks[channel]->addEvent(msg);
         }
@@ -1830,7 +1832,9 @@ MidiFile* SeqFile::toMIDIFile(ROM& rom) {
                 continue;
             }
             value = getAdjustedValue(param);
-            msg = MidiMessage::controllerEvent(channel + 1, 77, value);
+
+            int controllerType = value > 127 ? 81 : 77;
+            msg = MidiMessage::controllerEvent(channel + 1, controllerType, value);
             msg.setTimeStamp(t * ticks_multiplier);
             mtracks[channel]->addEvent(msg);
         }
@@ -1852,7 +1856,9 @@ MidiFile* SeqFile::toMIDIFile(ROM& rom) {
                 continue;
             }
             value = getAdjustedValue(param);
-            msg = MidiMessage::controllerEvent(channel + 1, 72, value);
+
+            int controllerType = value > 127 ? 73 : 72;
+            msg = MidiMessage::controllerEvent(channel + 1, controllerType, value);
             msg.setTimeStamp(t * ticks_multiplier);
             mtracks[channel]->addEvent(msg);
         }
@@ -2739,8 +2745,11 @@ void SeqFile::fromMidiFile(MidiFile& mfile) {
     ccstates[10]->action = "Chn Pan";
     ccstates[70]->action = "Chn Release Sustain";
     ccstates[72]->action = "Chn Release Rate";
+    ccstates[73]->action = "Chn Release Rate"; // Values > 127
     ccstates[76]->action = "Chn Vibrato Rate";
+    ccstates[80]->action = "Chn Vibrato Rate"; // Values > 127
     ccstates[77]->action = "Chn Vibrato Depth";
+    ccstates[81]->action = "Chn Vibrato Depth"; // Values > 127
     ccstates[78]->action = "Chn Vibrato Delay";
     ccstates[91]->action = "Chn Reverb";
     ccstates[128]->action = "Chn Pitch Bend";
@@ -2819,6 +2828,13 @@ void SeqFile::fromMidiFile(MidiFile& mfile) {
                 if (msg.isController()) {
                     cc = msg.getControllerNumber();
                     value = msg.getControllerValue();
+
+                    // 73 is high end of release rate
+                    // 80 is high end of vibrato depth
+                    // 81 is high end of vibrato rate
+                    if (cc == 73 || cc == 80 || cc == 81) {
+                        value += 128;
+                    }
                 }
                 else if (msg.isProgramChange()) {
                     cc = 129;

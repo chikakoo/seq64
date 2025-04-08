@@ -3,9 +3,15 @@
 
 Event renames and additions (*note that only the OoT V1.0 Rom Desc file has been updated with these*):
 - (70) Chn Release Sustain (new)
-- (72) Chn Release Rate (new)
-- (76) Chn Vibrato Rate (new)
-- (77) Chn Vibrato -> Chn Vibrato Depth (modified name only)
+- Chn Release Rate (new)
+  - (72) For values 0-127
+  - (73) For values 128-255 (will add 128 to the given value)
+- Chn Vibrato Rate (new)
+  - (76) For values 0-127
+  - (80) For values 128-255 (will add 128 to the given value)
+- Chn Vibrato -> Chn Vibrato Depth (modified name only)
+  - (77) For values 0-127
+  - (81) For values 128-255 (will add 128 to the given value)
 - (78) Chn Vibrato Delay (new)
 - (91) Chn Effect -> Chn Reverb (modified name only)
 
